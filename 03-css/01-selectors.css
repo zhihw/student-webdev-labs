@@ -10,12 +10,38 @@
 
 /* Use attribute selectors for the first part of the exercise */
 
-li[class] {
-  color: var(--red);
+li[class="dog"],
+li[class="hedgehog"] {
+  color: var(--magenta);
+}
+
+li[class="donkey"],
+li[class="cat dog parrot"]{
+  color: var(--royalblue);
+}
+
+li[id="cat"] {
+  color: var(--teal);
+}
+
+li[class="parrot"] {
+  color: var(--green);
 }
 
 /* Use descendant, child, and sibling selectors for the second part */
 
-section li {
+div.list-cleaning li {
   color: var(--green);
+}
+
+.list-food li:nth-child(1) {
+  color: var(--green);
+}
+
+.list-food li:nth-child(3) {
+  color: var(--royalblue);
+}
+
+.list-food li {
+  color: var(--magenta);
 }

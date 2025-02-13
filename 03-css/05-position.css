@@ -11,16 +11,36 @@
 
 .static {
   background-color: var(--darkviolet);
+  width: 300px;
+  height: 400px;
+  position: static;
+  display: inline-block;
+  margin-top: 75px;
 }
 
 .relative {
   background-color: var(--purple);
+  width: 300px;
+  height: 400px;
+  position: relative;
+  display: inline-block;
+  margin-top: 75px;
 }
 
 .absolute {
   background-color: var(--maroon);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
 }
 
 .fixed {
   background-color: var(--darkgolden);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
 }

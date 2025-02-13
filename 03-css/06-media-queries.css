@@ -4,3 +4,68 @@
     color: var(--white);
   }
 }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: var(--black);
+  background: var(--white);
+}
+
+header {
+  background-color: var(--black);
+  padding: 20px;
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+nav ul li {
+  color: var(--white);
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+
+#parmesan {
+  background-color: var(--purple);
+  padding: 20px;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+h3 {
+  font-weight: bold;
+  color: var(--white);
+}
+
+#parmesan p {
+  color: var(--white);
+}
+
+#manchego {
+  background-color: var(--purple);
+  color: var(--white);
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
