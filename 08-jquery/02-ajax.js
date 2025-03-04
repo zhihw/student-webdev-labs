@@ -1,52 +1,42 @@
-const url = 'https://anapioficeandfire.com/api/books/';
+$(document).ready(function() {
+  var url = 'https://anapioficeandfire.com/api/books/';
+  
+  var $app = $('#books').css('padding-left', '0');
+  var $loading = $('#loading');
 
-const app = document.querySelector('#books');
-app.style.paddingLeft = 0;
-const loading = document.querySelector('#loading');
+  function addBookToDOM(item) {
+    var $element = $('<div></div>').css({
+      'display': 'flex',
+      'flex-direction': 'column',
+      'align-items': 'center',
+      'margin-top': '20px'
+    });
+    
+    var $title = $('<h4></h4>').text(item.name);
+    var $author = $('<p></p>').text('by ' + item.authors[0]);
+    var $published = $('<p></p>').text(item.released.substr(0, 4));
+    var $pages = $('<p></p>').text(item.numberOfPages + ' pages');
+    
+    $element.append($title, $author, $published, $pages);
+    
+    $app.append($element);
+  }
 
-const addBookToDOM = (item) => {
-  console.log(item);
-  let element = document.createElement('div');
-  let title = document.createElement('h4');
-  let author = document.createElement('p');
-  let published = document.createElement('p');
-  let pages = document.createElement('p');
-
-  element.style.display = 'flex';
-  element.style.flexDirection = 'column';
-  element.style.alignItems = 'center';
-  element.style.marginTop = '20px';
-
-  title.textContent = item.name;
-  author.textContent = `by ${item.authors[0]}`;
-  published.textContent = item.released.substr(0, 4);
-  pages.textContent = `${item.numberOfPages} pages`;
-
-  element.append(title);
-  element.append(author);
-  element.append(published);
-  element.append(pages);
-
-  app.append(element);
-};
-
-const fetchData = (url) => {
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((item) => {
+  $.ajax({
+    url: url,
+    method: 'GET',
+    dataType: 'json',
+    success: function(data) {
+      $.each(data, function(index, item) {
         addBookToDOM(item);
       });
-    })
-    .catch((error) => {
-      console.log(error);
-      let li = document.createElement('li');
-      li.textContent = `An error occured. Please try again.`;
-      app.append(li);
-    })
-    .finally(() => {
-      app.removeChild(loading);
-    });
-};
-
-fetchData(url);
+    },
+    error: function(error) {
+      console.error(error);
+      $app.append($('<li>An error occurred. Please try again.</li>'));
+    },
+    complete: function() {
+      $loading.remove();
+    }
+  });
+});
